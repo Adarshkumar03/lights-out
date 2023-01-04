@@ -1,0 +1,10 @@
+extends layout 
+
+block content 
+    h1=title 
+
+    div.button-list 
+        each val in genre_list  
+                a(class="button-30" href=val.url) #{val.name}
+        else 
+            h2 There are no genres.        

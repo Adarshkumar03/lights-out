@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    h1 Genre: #{genre.name}
+
+    div(style='margin-left:20px;margin-top:20px')
+
+        h4 Movies
+
+        div.movie-list
+            each movie in genre_movies
+                div.list-item
+                    img(src="/images/Default_Image_thumbnail.png" alt=movie.name)
+                    a(href=movie.url) #{movie.name}
+                    span.movie-rating #{movie.rating}
+
+            else
+                p This genre has no movies
+    hr
+    p
+        a(href=genre.url+'/delete') Delete genre 
+    p
+        a(href=genre.url+'/update') Update genre               

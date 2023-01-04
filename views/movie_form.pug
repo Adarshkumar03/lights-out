@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Name:
+      input#name.form-control(type='text', placeholder='Name of movie' name='name' required='true' value=(undefined===movie ? '' : movie.name) )
+    div.form-group
+      label(for='rating') Rating: 
+      input#rating.form-control(type='number', placeholder='Rating of movie' name='rating' step='0.01' min='0' max='10' required='true' value=(undefined===movie ? '' : movie.rating) )
+    div.form-group
+      label(for='description') Description:
+      textarea#description.form-control(type='textarea', placeholder='description' name='description' required='true') #{undefined===movie ? '' : movie.description}
+    div.form-group
+      label(for='imageSrc') Image Src:
+      input#imageSrc.form-control(type='url' placeholder='Image Src' name='imageSrc' value=(undefined===movie ? '' : movie.imageSrc))
+    div.form-group
+      label(for='date_of_release') Date of Release: 
+      input#date_of_release.form-control(type='date', placeholder='Date of Release' name='date_of_release' required='true' value=(undefined===movie ? '' : movie.date_of_release) )   
+    div.form-group
+      label Directors:
+      div
+        for director in directors
+          div(style='display: inline; padding-right:10px;')
+            input.checkbox-input(type='checkbox', name='directors', id=director._id, value=director._id, checked=director.checked )
+            label(for=director._id) #{director.fullName}
+    div.form-group
+      label Writers:
+      div
+        for writer in writers
+          div(style='display: inline; padding-right:10px;')
+            input.checkbox-input(type='checkbox', name='writers', id=writer._id, value=writer._id, checked=writer.checked )
+            label(for=writer._id) #{writer.fullName}
+    div.form-group
+      label movies:
+      div
+        for cast in casts
+          div(style='display: inline; padding-right:10px;')
+            input.checkbox-input(type='checkbox', name='casts', id=cast._id, value=cast._id, checked=cast.checked )
+            label(for=cast._id) #{cast.fullName}                
+    div.form-group
+      label Genre:
+      div
+        for genre in genres
+          div(style='display: inline; padding-right:10px;')
+            input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
+            label(for=genre._id) #{genre.name}
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

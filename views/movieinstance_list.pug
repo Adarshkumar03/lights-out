@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+    h1=title 
+    
+    ul 
+        each val in movieinstance_list
+            li
+                a(href=val.url) #{val.movie.name} - 
+                if(val.status=='Available') 
+                    span(class="badge bg-success") #{val.status}
+                else if(val.status=='Sold')
+                    span(class="badge bg-danger") #{val.status}
+                else 
+                    span(class="badge bg-warning") #{val.status}    
+
+        else
+            li There are no movie copies.            

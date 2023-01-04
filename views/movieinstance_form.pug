@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='movie') Movie:
+      select#movie.form-control(type='select' placeholder='Select movie' name='movie' required='true')
+        - movie_list.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        for movie in movie_list
+          option(value=movie._id, selected=(selected_movie==movie._id.toString() ? 'selected' : false) ) #{movie.name}
+
+    div.form-group
+      label(for='status') Status:
+      select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
+        option(value='Available') Available
+        option(value='ComingSoon') ComingSoon
+        option(value='Sold') Sold
+
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

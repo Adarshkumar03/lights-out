@@ -1,0 +1,30 @@
+extends layout
+
+block content
+
+  div(class="card mb-3" style="max-width: 1300px;")
+    div(class="row g-0")
+      div(class="col-md-4")
+        img(src=director.imageSrc class="img-fluid rounded-start" alt=director.fullName)
+      div(class="col-md-8")
+        div(class="card-body")
+          h1(class="card-title") #{director.fullName}
+          h5(class="card-subtitle mb-2 text-muted") #{director.lifespan}
+          p(class="card-text") #{director.bio}
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Movies
+
+    div.movie-list
+      each movie in director_movies
+        div.list-item
+          a(href=movie.url)
+            img(src="/images/Default_Image_thumbnail.png" alt=movie.name)
+          a(href=movie.url) #{movie.name}
+          span.movie-rating #{movie.rating}
+
+      else
+        p This director has no movies.
+  hr
+  p
+    a(href=director.url+'/delete') Delete director

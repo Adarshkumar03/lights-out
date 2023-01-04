@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  h1 ID: #{movieinstance._id}
+
+  h5 #[strong Title:]
+    a(href=movieinstance.movie.url) #{movieinstance.movie.name}
+
+  h5 #[strong Status:]
+    if(movieinstance.status=='Available') 
+      span(class="badge bg-success") #{movieinstance.status}
+    else if(movieinstance.status=='Sold')
+      span(class="badge bg-danger") #{movieinstance.status}
+    else 
+      span(class="badge bg-warning") #{movieinstance.status}
+  hr
+  p
+    a(href=movieinstance.url+'/delete') Delete Movie Instance
+  p
+    a(href=movieinstance.url+'/update') Update Movie Instance

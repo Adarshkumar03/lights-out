@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+    h1=title
+
+    div(class="movie-list")
+        each val in director_list 
+            div.list-item 
+                a(href=val.url)
+                    img(src=val.imageSrc?val.imageSrc:"/images/default-avatar.png" alt=val.fullName)
+                a(href=val.url) #{val.fullName}
+                p #{val.lifespan}
+        else 
+            li There are no directors    

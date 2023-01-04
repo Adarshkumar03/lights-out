@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1 #{movie.name}
+  span.movie-rating #{movie.rating}
+  
+  p #[strong Directors: ]
+    each val, index in movie.directors
+      a(href=val.url) #{val.fullName}
+      if index < movie.directors.length - 1
+        |,
+  p #[strong Writers: ]
+    each val, index in movie.writers
+      a(href=val.url) #{val.fullName}
+      if index < movie.writers.length - 1
+        |,
+  p #[strong Cast: ]
+    each val, index in movie.casts
+      a(href=val.url) #{val.fullName}
+      if index < movie.casts.length - 1
+        |,            
+  p #[strong Description: ] #{movie.description}
+  p #[strong Genre: ]
+    each val, index in movie.genre
+      a(href=val.url) #{val.name}
+      if index < movie.genre.length - 1
+        |,
+
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Copies
+
+    each val in movie_instances
+      hr
+      if val.status=='Available'
+        p.text-success #{val.status}
+      else if val.status=='Sold'
+        p.text-danger #{val.status}
+      else
+        p.text-warning #{val.status}
+      p #[strong Id:]
+        a(href=val.url) #{val._id}
+
+    else
+      p There are no copies of this movie in the library.
+
+  hr
+  p
+    a(href=movie.url+'/delete') Delete Movie
+  p
+    a(href=movie.url+'/update') Update Movie

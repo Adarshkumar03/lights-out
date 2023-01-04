@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 #{title}: #{cast.fullName}
+  p= cast.lifespan
+
+  if cast_movies.length
+
+    p #[strong Delete the following movies before attempting to delete this cast.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Movies
+
+      dl
+      each movie in cast_movies
+        dt
+          a(href=movie.url) #{movie.name}
+        dd #{movie.description}
+
+  else
+    p Do you really want to delete this cast?
+
+    form(method='POST' action='')
+      div.form-group
+        input#castid.form-control(type='hidden',name='castid', required='true', value=cast._id )
+
+      button.btn.btn-primary(type='submit') Delete

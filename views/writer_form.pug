@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='fullName') Full Name:
+      input#fullName.form-control(type='text' placeholder='Full name' name='fullName' required='true' value=(undefined===writer ? '' : writer.fullName))
+    div.form-group
+      label(for='imageSrc') Image Src:
+      input#imageSrc.form-control(type='url' placeholder='Image Src' name='imageSrc' value=(undefined===writer ? '' : writer.imageSrc))
+    div.form-group
+      label(for='date_of_birth') Date of birth:
+      input#date_of_birth.form-control(type='date' name='date_of_birth' value=(undefined===writer ? '' : writer.date_of_birth) )
+    div.form-group
+      label(for='date_of_birth') Date of death:
+      input#date_of_death.form-control(type='date' name='date_of_death' value=(undefined===writer ? '' : writer.date_of_death) )  
+    div.form-group
+      label(for='bio') Bio:
+      textarea#bio.form-control(type='textarea', placeholder='bio' name='bio') #{undefined===writer ? '' : writer.bio}
+    button.btn.btn-primary(type='submit') Submit
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

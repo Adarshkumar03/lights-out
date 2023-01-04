@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  div(id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-bs-ride="carousel")
+    div(class="carousel-inner")
+      div(class="carousel-item active")
+        img(src="/images/1200x675.jpg" class="d-block w-100" alt="...")
+      div(class="carousel-item")
+        img(src="/images/parasite.jpg" class="d-block w-100" alt="...")
+      div(class="carousel-item")
+        img(src="/images/273546.jpg" class="d-block w-100" alt="...")
+  div(class="header")
+    h1= title
+    p Welcome to #[em LightsOut], a movie library made using express and node js.
+    a(class="header-button" href="/store/movies") Browse Movies
+
+  div.dynamic-content
+    h1 Dynamic content
+
+    if error
+      p Error getting dynamic content.
+    else
+      p The store has the following record counts:
+
+    div.showcase
+      div.showcase-item 
+        h2 #{data.movie_count} 
+        h3 Movies
+      div.showcase-item 
+        h2 #{data.movie_instance_count} 
+        h3 Copies
+      div.showcase-item 
+        h2 #{data.movie_instance_available_count} 
+        h3 Copies available
+      div.showcase-item 
+        h2 #{data.director_count} 
+        h3 Directors
+      div.showcase-item 
+        h2 #{data.writer_count} 
+        h3 Writers
+      div.showcase-item 
+        h2 #{data.cast_count}
+        h3 Casts
+      div.showcase-item 
+        h2 #{data.genre_count}
+        h3 Genres
+
