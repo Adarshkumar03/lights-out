@@ -7,7 +7,7 @@ const director_controller = require("../controllers/directorController");
 const writer_controller = require("../controllers/writerController");
 const cast_controller = require("../controllers/castController");
 const genre_controller = require("../controllers/genreController");
-const movie_instance_controller = require("../controllers/movieinstanceController");
+const movie_instance_controller = require("../controllers/movieInstanceController");
 
 /// movie ROUTES ///
 
