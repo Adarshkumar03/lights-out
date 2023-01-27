@@ -4,7 +4,7 @@ block content
   div(class="card mb-3" style="max-width: 1300px;")
     div(class="row g-0")
       div(class="col-md-4")
-        img(src=cast.imageSrc class="img-fluid rounded-start" alt=cast.fullName)
+        img(src=cast.imageSrc?cast.imageSrc:"/images/default-avatar.png" class="img-fluid rounded-start" alt=cast.fullName crossorigin="anonymous")
       div(class="col-md-8")
         div(class="card-body")
           h1(class="card-title") #{cast.fullName}
