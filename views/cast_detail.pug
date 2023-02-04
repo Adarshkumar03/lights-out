@@ -18,7 +18,7 @@ block content
       each movie in cast_movies
         div.list-item
           a(href=movie.url)
-            img(src=movie.imageSrc?movie.imageSrc:"/images/Default_Image_thumbnail.png" alt=movie.name)
+            img(src=movie.imageSrc?movie.imageSrc:"/images/defaultmovie.png" alt=movie.name)
           a(href=movie.url) #{movie.name}
           span.movie-rating #{movie.rating}
 
