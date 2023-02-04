@@ -19,7 +19,7 @@ var app = express();
 const mongoose = require("mongoose");
 
 
-const mongodb = process.env.MONGODB_URL || process.env.MONGO_DEV_URI;
+const mongodb = process.env.MONGO_DEV_URI;
 
 mongoose.connect(mongodb, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
